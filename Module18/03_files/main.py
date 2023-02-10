@@ -1,10 +1,10 @@
-file = input('Название файла: ')
+f_name = input('Название файла: ')
 for i in '@№$%^&\*()':
-    if file.startswith(i):
+    if f_name.startswith(i):
         print('Ошибка: название начинается на один из специальных символов.')
         break
 else:
-    if file.endswith(".txt") or file.endswith(".docx"):
+    if f_name.endswith(".txt") or f_name.endswith(".docx"):
         print('Файл назван верно.')
     else:
         print('Ошибка: неверное расширение файла. Ожидалось .txt или .docx.')
