@@ -24,4 +24,7 @@ store = {
     ],
 }
 
-# TODO здесь писать код
+for item in goods:
+    quantity = sum([part['quantity'] for part in store[goods.get(item)]])
+    price = sum([part['quantity'] * part['price'] for part in store[goods.get(item)]])
+    print(f'{item} — {quantity} шт., стоимость {price} руб.')

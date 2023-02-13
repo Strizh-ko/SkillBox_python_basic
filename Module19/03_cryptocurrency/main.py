@@ -2,8 +2,8 @@ data = {
     "address": "0x544444444444",
     "ETH": {
         "balance": 444,
-        "total_in": 444,
-        "total_out": 4
+        "totalIn": 444,
+        "totalOut": 4
     },
     "count_txs": 2,
     "tokens": [
@@ -44,5 +44,10 @@ data = {
     ]
 }
 
+print(data.keys())
+print(data.values())
 
-# TODO здесь писать код
+data['ETH'].update({'total_diff': 100})
+data['tokens'][0]['fst_token_info']['name'] = 'doge'
+data['ETH']['total_out'] = data['tokens'][0].pop('total_out')
+data['tokens'][1]['sec_token_info']['total_price'] = data['tokens'][1]['sec_token_info'].pop('price')
