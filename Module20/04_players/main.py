@@ -4,4 +4,4 @@ players = {
     ("Rob", "Bobbin"): (12, 8, 2)
 }
 
-# TODO здесь писать код
+print([(name[:] + points[:]) for name, points in players.items()])
