@@ -19,18 +19,16 @@ students = {
     }
 }
 
-def func(students):
+def get_students_data(students):
     lst = []
     count = 0
     for i in students.values():
         lst.extend(i['interests'])
         count += len(i['surname'])
+    pairs = [(id, info['age']) for id, info in students.items()]
+    print('Список пар "ID студента — возраст":', pairs)
     return lst, count
 
-lst, count = func(students)
+lst, count = get_students_data(students)
 print('Общий список интересов:', lst)
 print('Кол-во символов во всех фамилиях:', count)
-
-pairs = {id: info["age"] for id, info in students.items()}
-for id, age in pairs.items():
-    print(f'id : {id}, age : {age}')
