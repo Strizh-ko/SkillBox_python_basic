@@ -1,17 +1,22 @@
+def score_key(player):
+    return int(player[1][0]), int(player[1][1])
+
 n = int(input('Сколько записей вносится в протокол? '))
 
-
-players = []
-points = []
+registr = dict()
 for i in range(n):
     play = input(f'{i + 1}-я запись: ').split()
-    players.append(play[1])
-    points.append(int(play[0]))
+    if play[1] in registr:
+        if int(registr[play[1]][0]) < int(play[0]):
+            registr[play[1]] = [int(play[0]), i + 1]
+    else:
+        registr[play[1]] = [play[0], i + 1]
+
+score_list = list(registr.items())
 
 print('\nИтоги соревнований:')
-for i in range(1,4):
-    top_points = max(points)
-    winer = players[points.index(top_points)]
-    print(f'{i}е место. {winer} ({top_points})')
-    players.remove(winer)
-    points.remove(top_points)
+score_list.sort(key=score_key, reverse=True)
+
+for i in range(3):
+    print(f'{i + 1}е место. {score_list[i][0]} ({score_list[i][1][0]})')
+
