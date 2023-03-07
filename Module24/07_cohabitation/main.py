@@ -2,22 +2,30 @@ import random
 
 
 class House:
-    food = 50
-    money = 0
 
-    def __init__(self, name, saturation=50):
+    def __init__(self, food=50, money=0):
+        self.food = food
+        self.money = money
+        self.residents = list()
+
+
+class Human:
+
+    def __init__(self, name, house, saturation=50):
         self.name = name
+        self.house = house
         self.saturation = saturation
+        if self.house:
+            self.house.residents.append(self)
 
     def eat(self):
         self.saturation += 1
-        House.food -= 1
+        self.house.food -= 1
         print(f'{self.name} покушал.')
-
 
     def work(self):
         self.saturation -= 1
-        House.money += 1
+        self.house.money += 1
         print(f'{self.name} работает.')
 
     def play(self):
@@ -25,26 +33,26 @@ class House:
         print(f'{self.name} играет в бирюльки.')
 
     def magazine(self):
-        House.food += 1
-        House.money -= 1
+        self.house.food += 1
+        self.house.money -= 1
         print(f'{self.name} идет в магазин за едой.')
 
 
-person1 = House('Саня')
-person2 = House('Адда')
-person3 = House("Бабуля")
-peole = [person1, person2, person3]
+house = House()
+person1 = Human('Саня', house)
+person2 = Human('Адда', house)
+person3 = Human("Бабуля", house)
 
 
 for day in range(1, 366):
     print(f'\nДень {day}')
-    for person in peole:
+    for person in house.residents:
         digit = random.randint(1, 6)
         if person.saturation < 20:
             person.eat()
-        elif House.food < 10:
+        elif house.food < 10:
             person.magazine()
-        elif House.money < 50:
+        elif house.money < 50:
             person.work()
         elif digit == 1:
             person.work()
@@ -55,7 +63,7 @@ for day in range(1, 366):
 
         print(f'{person.name} - ссытость: {person.saturation}. Число дня: {digit}')
         if person.saturation == 0:
-            peole.remove(person)
+            house.residents.remove(person)
             print(f'{person.name} скончался с голодухи')
 
-    print(f'Конец дня. Ресурсы дома - Еда: {House.food}. Денег: {House.money}')
+    print(f'Конец дня. Ресурсы дома - Еда: {house.food}. Денег: {house.money}')
