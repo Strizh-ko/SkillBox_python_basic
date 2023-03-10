@@ -14,22 +14,14 @@ class Property:
 class Apartment(Property):
     tax = 0.001
 
-    def __init__(self, worth):
-        super().__init__(worth)
-
 
 class Car(Property):
     tax = 0.005
-
-    def __init__(self, worth):
-        super().__init__(worth)
 
 
 class CountryHouse(Property):
     tax = 0.002
 
-    def __init__(self, worth):
-        super().__init__(worth)
 
 
 apart = Apartment(float(input('Сколько стоит ваша квартира? ')))
