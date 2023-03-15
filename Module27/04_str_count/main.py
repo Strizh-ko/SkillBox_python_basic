@@ -10,8 +10,9 @@ def counter(func):
 
     def wrapper_func(*args, **kwargs):
         cnt.cnt_call += 1
-        func(*args, **kwargs)
+        rez = func(*args, **kwargs)
         print(f'Функция {func.__name__} выполнена {cnt.cnt_call}-й раз')
+        return rez
 
     return wrapper_func
 
