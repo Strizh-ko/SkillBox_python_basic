@@ -5,8 +5,8 @@ class MyMath:
 
     @classmethod
     def circle_len(cls, radius):
-        len = 2 * math.pi * radius
-        return len
+        length = 2 * math.pi * radius
+        return length
 
     @classmethod
     def circle_sq(cls, radius):
