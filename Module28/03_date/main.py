@@ -2,6 +2,7 @@ import time
 
 
 class Date:
+    cur_date = None
 
     @classmethod
     def is_date_valid(cls, test_date: str) -> bool:

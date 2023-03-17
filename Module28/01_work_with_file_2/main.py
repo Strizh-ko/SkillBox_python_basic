@@ -17,8 +17,10 @@ class File:
 
     def __exit__(self, exc_type, exc_val, exc_tb):
         self.file.close()
-        return True
+        if exc_type is not None:
+            if exc_type is IOError or issubclass(IOError, exc_type):
+                return True
 
 
-with File('new-file.txt', 'r') as file:
-    file.write('Ля-ля тополя!')
+with File('new-file.txt', 'a') as file:
+    file.write('Ля-ля тополя!\n')
