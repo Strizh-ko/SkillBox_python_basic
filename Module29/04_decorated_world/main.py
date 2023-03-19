@@ -1,9 +1,13 @@
+# Реализуйте декоратор для декораторов:
+# он должен декорировать другую функцию, которая должна быть декоратором,
+# и даёт возможность любому декоратору принимать произвольные аргументы
+from typing import Callable
+
 def decorator_with_args_for_any_decorator(decorator):
     def wrapper(*args, **kwargs):
         print(f'Переданные args и kwargs в декоратор "{decorator.__name__}":', args, kwargs)
         return decorator(*args, **kwargs)
     return wrapper
-
 
 @decorator_with_args_for_any_decorator
 def decorated_decorator(*args, **kwargs):
