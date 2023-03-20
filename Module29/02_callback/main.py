@@ -7,7 +7,7 @@ def callback(key: str):
 
         @functools.wraps(func)
         def wrapper(*args, **kwargs):
-            # app[key] = func            # Не понимаю, почему эта строчка не выполняется, если ее прописать здесь вместо 6й строки
+            # app[key] = func
             rez = func(*args, **kwargs)
             return rez
 
