@@ -1,7 +1,7 @@
 import os
 
 
-my_path = os.path.abspath('..\\..\\Module26')
+my_path = os.path.abspath('..')
 
 
 def str_count(my_path):
